@@ -8,7 +8,7 @@
 <body>
     <h1>表單練習</h1>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
 
     <fieldset>
         <legend>基本資料</legend>
@@ -122,7 +122,22 @@
         
     <fieldset>
         <legend>資料上傳</legend>
+        
+        <div>
+            <label for="agreement">同意書</label>
+            <input type="file" name="agreement" id="agreement"  accept=".pdf,.doc,.docx">
+        </div>
+        <div>
+            <label for="photo">個人照片</label>
+            <input type="file" name="photo" id="photo" accept="image/*"  onchange="preview_image(event)">
+            <div>
+                <img id="output_image" src="" width="300"/>
+            </div>
+        </div>
+
     </fieldset>
+
+
     <input type="submit" value="送出">
     </form>
 
@@ -133,7 +148,31 @@
         print_r($_POST);
         echo "</pre>";
     }
+  
+    if (isset($_FILES["agreement"])):
+        echo "<pre>";
+        print_r($_FILES["agreement"]);
+        echo "</pre>";
+    endif;
+
+    if (isset($_FILES["photo"])):
+        echo "<pre>";
+        print_r($_FILES["photo"]);
+        echo "</pre>";
+    endif
+    
+
     ?>
 
+<script type='text/javascript'>
+function preview_image(event) {
+    var reader = new FileReader();
+    reader.onload = function () {
+        var output = document.getElementById('output_image');
+        output.src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+</script>
 </body>
 </html>
