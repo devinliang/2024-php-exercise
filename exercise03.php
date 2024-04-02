@@ -50,12 +50,76 @@
     
     <fieldset>
         <legend>使用行為</legend>
+        
+        <input type="checkbox" name="behave[]" id="behave1" value="chat">
+        <label for="behave1">聊天</label>
+
+        <input type="checkbox" name="behave[]" id="behave2" value="cast">
+        <label for="behave2">直播</label>
+
+        <input type="checkbox" name="behave[]" id="behave3" value="mail">
+        <label for="behave3">書信</label>
+
+        <input type="checkbox" name="behave[]" id="behave4" value="social">
+        <label for="behave4">社群</label>
+        
+        <input type="checkbox" name="behave[]" id="behave5" value="shopping">
+        <label for="behave5">購物</label>
+
+        <input type="checkbox" name="behave[]" id="behave6" value="finance">
+        <label for="behave6">金融</label>
+
     </fieldset>
     
     <fieldset>
         <legend>滿意度</legend>
-    </fieldset>
+        <div>
+            場地
+            <input type="radio" name="venue" id="venue5" value="5">
+            <label for="venue5">非常滿意</label>
+            <input type="radio" name="venue" id="venue4" value="4">
+            <label for="venue4">滿意</label>
+            <input type="radio" name="venue" id="venue3" value="3">
+            <label for="venue3">普通</label>
+            <input type="radio" name="venue" id="venue2" value="2">
+            <label for="venue2">不滿意</label>
+            <input type="radio" name="venue" id="venue1" value="1">
+            <label for="venue1">非常不滿意</label>
+        </div>
 
+        <div>
+            設備
+            <input type="radio" name="device" id="device5" value="5">
+            <label for="device5">非常滿意</label>
+            <input type="radio" name="device" id="device4" value="4">
+            <label for="device4">滿意</label>
+            
+            <input type="radio" name="device" id="device3" value="3">
+            <label for="device3">普通</label>
+
+            <input type="radio" name="device" id="device2" value="2">
+            <label for="device2">不滿意</label>
+            <input type="radio" name="device1" id="device1" value="1">
+            <label for="device1">非常不滿意</label>
+        </div>
+
+        <div>
+
+            服務
+            <input type="radio" name="service" id="service5" value="5">
+            <label for="service5">非常滿意</label>
+            <input type="radio" name="service" id="service4" value="4">
+            <label for="service4">滿意</label>
+            <input type="radio" name="service" id="service3" value="3">
+            <label for="service3">普通</label>
+            <input type="radio" name="service" id="service2" value="2">
+            <label for="service2">不滿意</label>
+            <input type="radio" name="service" id="service1" value="1">
+            <label for="service1">非常不滿意</label>
+        </div>
+
+        </fieldset>
+        
     <fieldset>
         <legend>資料上傳</legend>
     </fieldset>
