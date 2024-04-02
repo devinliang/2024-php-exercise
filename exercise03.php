@@ -19,9 +19,9 @@
 
         <div>
             性別：
-            <input type="radio" name="gender" id="gender-male">
+            <input type="radio" name="gender" id="gender-male" value="male">
             <label for="gender-male">男生</label>
-            <input type="radio" name="gender" id="gender-female">
+            <input type="radio" name="gender" id="gender-female" value="female">
             <label for="gender-female">女生</label>
         </div>
 
@@ -59,8 +59,17 @@
     <fieldset>
         <legend>資料上傳</legend>
     </fieldset>
-
+    <input type="submit" value="送出">
     </form>
+
+    <?php
+    if (!empty($_POST)) {
+        echo "<hr>";
+        echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
+    }
+    ?>
 
 </body>
 </html>
