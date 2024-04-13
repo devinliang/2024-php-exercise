@@ -27,13 +27,17 @@ try {
 
     // 設定錯誤處理模式 set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // 送出SQL語法給資料庫
     $stmt = $conn->query("SELECT * FROM book");
 
     // 設定資料取出的方式
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
+    // 取出資料集
     $rows = $stmt->fetchAll();
 
+    // 以表格形式呈現資料
     echo "<table class='table table-hover table-striped'>";
     echo "<tr> <td>書名</td> <td>作者</td> <td>出版日期</td> <td>定價</td></tr>";
     foreach ($rows as $row) {
@@ -56,6 +60,6 @@ try {
 $conn = null;
 ?>
 
-</div>
+    </div>
 </body>
 </html>
