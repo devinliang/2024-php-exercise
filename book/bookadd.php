@@ -10,60 +10,47 @@
 </head>
 <body>
 
+<?php
+    if (isset($_POST["submit"])) {
+        echo "收到表單送出資料了";
+    }
+?>
+
     <div class="container">
         <h1 class="text-center">Book List</h1>
 
+        <form action="" method="post">
+            <p>
+                <label for="bookname">書名：</label>
+                <input type="text" name="bookname" id="bookname" placeholder="請輸入書名" required>
+            </p>
 
-<?php
+            <p>
+                <label for="author">作者：</label>
+                <input type="text" name="author" id="author" placeholder="請輸入作者" required>
+            </p>
 
-// 設定主機、資料庫名稱、權限帳密
-$hostname = 'localhost';
-$database = 'school';
-$dbuser = 'root';
-$dbpass = '';
+            <p>
+                <label for="publisher">出版社：</label>
+                <input type="text" name="publisher" id="publisher" placeholder="請輸入出版社" required>
+            </p>
 
-try {
-    $conn = new PDO("mysql:host=$hostname;dbname=$database;charset=UTF8", $dbuser, $dbpass);
+            <p>
+                <label for="pubdate">出版日期：</label>
+                <input type="date" name="pubdate" id="pubdate" value="<?= date('Y-m-d'); ?>"  required>
+            </p>
 
-    // 設定錯誤處理模式 set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            <p>
+                <label for="price">定價：</label>
+                <input type="number" name="price" id="price" placeholder="請輸入定價" required>
+            </p>
+            
+            <p>
+                <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            </p>
 
-    // 送出SQL語法給資料庫
-    $sql = "INSERT INTO `book` (`id`, `bookname`, `author`, `publisher`, `pubdate`, `price`, `content`) VALUES 
-     (NULL, 'mmmmkkkk', 'yyyyy', 'hhhhh', '2024-05-16', '300', 'lkaasdflkjasdflk asdflkasdf \nlkjasdflkj asdflkj\nlkasjdflkasjdf')";
-
-    $stmt = $conn->query($sql);
-
-    $sql = "SELECT * FROM book";
-    $stmt = $conn->query($sql);
-    // 設定資料取出的方式
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-    // 取出資料集
-    $rows = $stmt->fetchAll();
-
-    // 以表格形式呈現資料
-    echo "<table class='table table-hover table-striped'>";
-    echo "<tr> <td>書名</td> <td>作者</td> <td>出版日期</td> <td>定價</td></tr>";
-    foreach ($rows as $row) {
-        echo "<tr>";
-        echo "<td>". $row['bookname'] ."</td>\n";
-        echo "<td>". $row['author']   ."</td>\n";
-        echo "<td>". $row['pubdate']  ."</td>\n";
-        echo "<td>". $row['price']    ."</td>\n";
-        echo "</tr>";
-    }
-
-    echo "</table>";
-
-} catch(PDOException $e) {
-
-    echo "連線失敗 Connection failed: " . $e->getMessage();
-
-}
-
-$conn = null;
-?>
+            <p><input type="submit" name="submit" value="確認新增"></p>
+        </form>
 
     </div>
 </body>
