@@ -1,3 +1,45 @@
+<?php
+    if (isset($_POST["submit"])) {
+        
+        $bookname = $_POST["bookname"];
+        $author = $_POST["author"];
+        $publisher = $_POST["publisher"];
+        $pubdate = $_POST["pubdate"];
+        $price = $_POST["price"];
+        $content = $_POST["content"];
+
+
+        // 設定主機、資料庫名稱、權限帳密
+        $hostname = 'localhost';
+        $database = 'school';
+        $dbuser = 'root';
+        $dbpass = '';
+
+        try {
+            $conn = new PDO("mysql:host=$hostname;dbname=$database;charset=UTF8", $dbuser, $dbpass);
+
+            // 設定錯誤處理模式 set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            // 送出SQL語法給資料庫
+            $sql = "INSERT INTO `book` (`id`, `bookname`, `author`, `publisher`, `pubdate`, `price`, `content`) VALUES 
+            (NULL, '$bookname', '$author', '$publisher', '$pubdate', '$price', '$content')";
+
+            $stmt = $conn->query($sql);
+
+            header('Location: booklist.php');
+            exit;
+            
+        } catch(PDOException $e) {
+
+            echo "連線失敗 Connection failed: " . $e->getMessage();
+
+        }
+
+        $conn = null;
+        
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,18 +48,12 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <title>Book List</title>
+    <title>Book Add</title>
 </head>
 <body>
 
-<?php
-    if (isset($_POST["submit"])) {
-        echo "收到表單送出資料了";
-    }
-?>
-
     <div class="container">
-        <h1 class="text-center">Book List</h1>
+        <h1 class="text-center">Book ADD</h1>
 
         <form action="" method="post">
             <div class="mb-3">

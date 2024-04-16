@@ -60,7 +60,7 @@ try {
 
 $conn = null;
 ?>
-
+        <p>[<a href="./bookadd.php">新增資料</a>]</p>
     </div>
 </body>
 </html>
