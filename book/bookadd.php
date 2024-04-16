@@ -20,36 +20,37 @@
         <h1 class="text-center">Book List</h1>
 
         <form action="" method="post">
-            <p>
-                <label for="bookname">書名：</label>
-                <input type="text" name="bookname" id="bookname" placeholder="請輸入書名" required>
-            </p>
+            <div class="mb-3">
+                <label for="bookname" class="form-label">書名：</label>
+                <input type="text" class="form-control" name="bookname" id="bookname" placeholder="請輸入書名" required>
+            </div>
 
-            <p>
-                <label for="author">作者：</label>
-                <input type="text" name="author" id="author" placeholder="請輸入作者" required>
-            </p>
+            <div class="mb-3">
+                <label for="author" class="form-label">作者：</label>
+                <input type="text" class="form-control" name="author" id="author" placeholder="請輸入作者" required>
+            </div>
 
-            <p>
-                <label for="publisher">出版社：</label>
-                <input type="text" name="publisher" id="publisher" placeholder="請輸入出版社" required>
-            </p>
+            <div class="mb-3">
+                <label for="publisher" class="form-label">出版社：</label>
+                <input type="text" class="form-control" name="publisher" id="publisher" placeholder="請輸入出版社" required>
+            </div>
 
-            <p>
-                <label for="pubdate">出版日期：</label>
-                <input type="date" name="pubdate" id="pubdate" value="<?= date('Y-m-d'); ?>"  required>
-            </p>
+            <div class="mb-3">
+                <label for="pubdate" class="form-label">出版日期：</label>
+                <input type="date" class="form-control" name="pubdate" id="pubdate" value="<?= date('Y-m-d'); ?>"  required>
+            </div>
 
-            <p>
-                <label for="price">定價：</label>
-                <input type="number" name="price" id="price" placeholder="請輸入定價" required>
-            </p>
+            <div class="mb-3">
+                <label for="price" class="form-label">定價：</label>
+                <input type="number" class="form-control" name="price" id="price" placeholder="請輸入定價" required>
+            </div>
             
-            <p>
-                <textarea name="content" id="content" cols="30" rows="10"></textarea>
-            </p>
+            <div class="mb-3">
+                <label for="content" class="form-label">內容簡介：</label>
+                <textarea name="content" class="form-control" id="content" cols="30" rows="10"></textarea>
+            </div>
 
-            <p><input type="submit" name="submit" value="確認新增"></p>
+            <div class="mb-3"><input type="submit" class="form-control" name="submit" value="確認新增"></div>
         </form>
 
     </div>
