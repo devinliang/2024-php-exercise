@@ -29,9 +29,13 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // 送出SQL語法給資料庫
-    $sql = "SELECT * FROM book";
+    $sql = "INSERT INTO `book` (`id`, `bookname`, `author`, `publisher`, `pubdate`, `price`, `content`) VALUES 
+     (NULL, 'mmmmkkkk', 'yyyyy', 'hhhhh', '2024-05-16', '300', 'lkaasdflkjasdflk asdflkasdf \nlkjasdflkj asdflkj\nlkasjdflkasjdf')";
+
     $stmt = $conn->query($sql);
 
+    $sql = "SELECT * FROM book";
+    $stmt = $conn->query($sql);
     // 設定資料取出的方式
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
