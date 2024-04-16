@@ -28,37 +28,24 @@ try {
     // 設定錯誤處理模式 set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    $key = $_GET['key'];
     // 送出SQL語法給資料庫
-    $sql = "SELECT * FROM book";
+    $sql = "SELECT * FROM book WHERE `id`=".$key;
     $stmt = $conn->query($sql);
 
     // 設定資料取出的方式
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
     // 取出資料集
-    $rows = $stmt->fetchAll();
+    $row = $stmt->fetch();
 
-    // 以表格形式呈現資料
-    echo "<table class='table table-hover table-striped'>";
-    echo "<tr> <td>書名</td> <td>作者</td> <td>出版日期</td> <td>定價</td><td>function</td></tr>";
-    foreach ($rows as $row) {
-        echo "<tr>";
-        echo "<td>". $row['bookname'] ."</td>\n";
-        echo "<td>". $row['author']   ."</td>\n";
-        echo "<td>". $row['pubdate']  ."</td>\n";
-        echo "<td>". $row['price']    ."</td>\n";
-        
-        echo "<td>";
-        echo '<a href=./bookshow.php?key='.$row['id'].'>';
-        echo "details";
-        echo "</a>";
-        echo "</td>";
-
-        echo "</tr>";
-    }
-
-    echo "</table>";
-
+    echo $row['bookname'] ."<br>\n";
+    echo $row['author']   ."<br>\n";
+    echo $row['pubdate']  ."<br>\n";
+    echo $row['price']    ."<br>\n";
+    echo nl2br($row['content']);
+    
+    
 } catch(PDOException $e) {
 
     echo "連線失敗 Connection failed: " . $e->getMessage();
@@ -67,7 +54,7 @@ try {
 
 $conn = null;
 ?>
-        <p>[<a href="./bookadd.php">新增資料</a>]</p>
+        
     </div>
 </body>
 </html>
