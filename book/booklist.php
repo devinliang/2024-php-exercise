@@ -51,7 +51,12 @@ try {
         echo "<td>";
         echo '<a href=./bookshow.php?key='.$row['id'].'>';
         echo "details";
+        echo "</a> | ";
+
+        echo '<a href=./bookdelete.php?key='.$row['id'].' onClick="return confirm(\'確定要刪除此筆資料?\');">';
+        echo "delete";
         echo "</a>";
+
         echo "</td>";
 
         echo "</tr>";
