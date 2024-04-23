@@ -1,12 +1,12 @@
 <?php
     if (isset($_POST["submit"])) {
         
-        $bookname = $_POST["bookname"];
-        $author = $_POST["author"];
-        $publisher = $_POST["publisher"];
-        $pubdate = $_POST["pubdate"];
-        $price = $_POST["price"];
-        $content = $_POST["content"];
+        $bookname  = htmlentities($_POST["bookname"]);
+        $author    = htmlentities($_POST["author"]);
+        $publisher = htmlentities($_POST["publisher"]);
+        $pubdate   = htmlentities($_POST["pubdate"]);
+        $price     = htmlentities($_POST["price"]);
+        $content   = htmlentities($_POST["content"]);
 
 
         // 設定主機、資料庫名稱、權限帳密

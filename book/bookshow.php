@@ -16,6 +16,8 @@
 
 <?php
 
+if (isset($_GET["key"])) {
+    
 // 設定主機、資料庫名稱、權限帳密
 $hostname = 'localhost';
 $database = 'school';
@@ -41,6 +43,7 @@ try {
 
     echo $row['bookname'] ."<br>\n";
     echo $row['author']   ."<br>\n";
+    echo $row['publisher']   ."<br>\n";
     echo $row['pubdate']  ."<br>\n";
     echo $row['price']    ."<br>\n";
     echo nl2br($row['content']);
@@ -53,6 +56,13 @@ try {
 }
 
 $conn = null;
+
+} else {
+
+    header('Location: booklist.php');
+    exit;
+
+}
 ?>
         
     </div>
