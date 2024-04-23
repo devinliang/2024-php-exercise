@@ -86,5 +86,7 @@ $conn = null;
 ?>
         
     </div>
+    <hr>
+    <p class="text-center">1111xxx name &copy; 2024 Wenzao DCAM</p> 
 </body>
 </html>
