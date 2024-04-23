@@ -40,7 +40,9 @@ try {
 
     // 以表格形式呈現資料
     echo "<table class='table table-hover table-striped'>";
-    echo "<tr> <td>書名</td> <td>作者</td> <td>出版日期</td> <td>定價</td><td>function</td></tr>";
+    echo '<tr> <td>書名</td> <td>作者</td> <td>出版日期</td>
+     <td>定價</td><td>[<a href="./bookadd.php">新增資料</a>]</td></tr>';
+
     foreach ($rows as $row) {
         echo "<tr>";
         echo "<td>". $row['bookname'] ."</td>\n";
@@ -49,8 +51,13 @@ try {
         echo "<td>". $row['price']    ."</td>\n";
         
         echo "<td>";
+
         echo '<a href=./bookshow.php?key='.$row['id'].'>';
         echo "details";
+        echo "</a> | ";
+
+        echo '<a href=./bookedit.php?key='.$row['id'].'>';
+        echo "edit";
         echo "</a> | ";
 
         echo '<a href=./bookdelete.php?key='.$row['id'].' onClick="return confirm(\'確定要刪除此筆資料?\');">';
@@ -72,7 +79,7 @@ try {
 
 $conn = null;
 ?>
-        <p>[<a href="./bookadd.php">新增資料</a>]</p>
+        
     </div>
 </body>
 </html>

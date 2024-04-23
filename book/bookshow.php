@@ -17,7 +17,7 @@
 <?php
 
 if (isset($_GET["key"])) {
-    
+
 // 設定主機、資料庫名稱、權限帳密
 $hostname = 'localhost';
 $database = 'school';
@@ -40,15 +40,35 @@ try {
 
     // 取出資料集
     $row = $stmt->fetch();
-
-    echo $row['bookname'] ."<br>\n";
-    echo $row['author']   ."<br>\n";
-    echo $row['publisher']   ."<br>\n";
-    echo $row['pubdate']  ."<br>\n";
-    echo $row['price']    ."<br>\n";
-    echo nl2br($row['content']);
+?>
+    <table class="table">
+        <tr>
+            <th>書名</th>
+            <td><?= $row['bookname'] ?></td>
+        </tr>
+        <tr>
+            <th>作者</th>
+            <td><?= $row['author'] ?></td>
+        </tr>
+        <tr>
+            <th>出版社</th>
+            <td><?= $row['publisher'] ?></td>
+        </tr>
+        <tr>
+            <th>出版日期</th>
+            <td><?= $row['pubdate'] ?></td>
+        </tr>
+        <tr>
+            <th>定價</th>
+            <td><?= $row['price'] ?></td>
+        </tr>
+        <tr>
+            <th>內容簡介</th>
+            <td><?= nl2br($row['content']) ?></td>
+        </tr>
+    </table>
     
-    
+<?php  
 } catch(PDOException $e) {
 
     echo "連線失敗 Connection failed: " . $e->getMessage();
