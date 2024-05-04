@@ -7,6 +7,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <title>課程公告</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            background: lightpink;
+        }
+    </style>
 </head>
 <body>
 
@@ -41,14 +49,20 @@ try {
     foreach ($rows as $row) {
         echo "<tr>";
         echo "<td>". $row['category'] ."</td>\n";
+
         echo "<td>". $row['anndate']   ."</td>\n";
-        echo "<td>". $row['title']  ."</td>\n";
+
         
         echo "<td>";
 
         echo '<a href=./ann_show.php?key='.$row['id'].'>';
-        echo "details";
-        echo "</a> | ";
+        echo $row['title'];
+        echo "</a>";
+
+        echo "</td>\n";
+
+        
+        echo "<td>";
 
         echo '<a href=./ann_edit.php?key='.$row['id'].'>';
         echo "edit";
