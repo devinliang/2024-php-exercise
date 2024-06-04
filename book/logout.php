@@ -13,6 +13,7 @@ require_once "dbconfig.php";
 
 // Redirect to login page
 echo "使用者已登出，轉入登入頁面中...";
-$goto = 'Refresh: 2; URL = '.$main;
+// $goto = 'Refresh: 2; URL = '.$main;
+$goto = 'location: '.$main;
 header($goto);
 ?>

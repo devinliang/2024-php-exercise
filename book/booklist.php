@@ -1,3 +1,9 @@
+<?php 
+session_start();
+function loginOK() {
+    return (isset($_SESSION["loggedin"]) && ($_SESSION["loggedin"]===true));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +19,11 @@
     <div class="container">
         <h1 class="text-center">Book List</h1>
 
+        <?php if (loginOK()) { ?>
+        <p class="text-center">使用者：<?= $_SESSION["username"] ?></p>
+        <?php } ?>
 
 <?php
-
 // Include config file
 require_once "dbconfig.php";
 
@@ -38,7 +46,17 @@ try {
     // 以表格形式呈現資料
     echo "<table class='table table-hover table-striped'>";
     echo '<tr> <td>書名</td> <td>作者</td> <td>出版日期</td>
-     <td>定價</td><td>[<a href="./bookadd.php">新增資料</a>]</td></tr>';
+     <td>定價</td><td>';
+
+    if (loginOK()) {
+        echo '<a class="btn btn-primary" href="./bookadd.php">新增資料</a>
+        <a class="btn btn-primary" href="./logout.php">登出</a>';
+    } else {
+        echo '<a class="btn btn-primary" href="./login.php">登入</a> /
+        <a class="btn btn-warning"  href="./register.php">註冊</a>';
+    }
+     
+    echo '</td></tr>';
 
     foreach ($rows as $row) {
         echo "<tr>";
@@ -49,17 +67,19 @@ try {
         
         echo "<td>";
 
-        echo '<a href=./bookshow.php?key='.$row['id'].'>';
+        echo '<a class="btn btn-success" href=./bookshow.php?key='.$row['id'].'>';
         echo "details";
-        echo "</a> | ";
-
-        echo '<a href=./bookedit.php?key='.$row['id'].'>';
-        echo "edit";
-        echo "</a> | ";
-
-        echo '<a href=./bookdelete.php?key='.$row['id'].' onClick="return confirm(\'確定要刪除此筆資料?\');">';
-        echo "delete";
         echo "</a>";
+
+        if (loginOK()) {
+            echo ' | <a class="btn btn-primary" href=./bookedit.php?key='.$row['id'].'>';
+            echo "edit";
+            echo "</a> | ";
+
+            echo '<a class="btn btn-warning" href=./bookdelete.php?key='.$row['id'].' onClick="return confirm(\'確定要刪除此筆資料?\');">';
+            echo "delete";
+            echo "</a>";
+        }
 
         echo "</td>";
 
