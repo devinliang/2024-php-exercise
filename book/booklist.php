@@ -16,11 +16,8 @@
 
 <?php
 
-// 設定主機、資料庫名稱、權限帳密
-$hostname = 'localhost';
-$database = 'school';
-$dbuser = 'root';
-$dbpass = '';
+// Include config file
+require_once "dbconfig.php";
 
 try {
     $conn = new PDO("mysql:host=$hostname;dbname=$database;charset=UTF8", $dbuser, $dbpass);
