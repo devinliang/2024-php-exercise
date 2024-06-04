@@ -11,6 +11,7 @@ function loginOK() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
 
     <title>Book List</title>
 </head>
@@ -44,8 +45,8 @@ try {
     $rows = $stmt->fetchAll();
 
     // 以表格形式呈現資料
-    echo "<table class='table table-hover table-striped'>";
-    echo '<tr> <td>書名</td> <td>作者</td> <td>出版日期</td>
+    echo "<table class='table table-hover table-striped' id='myTable'>";
+    echo '<thead><tr> <td>書名</td> <td>作者</td> <td>出版日期</td>
      <td>定價</td><td>';
 
     if (loginOK()) {
@@ -56,8 +57,8 @@ try {
         <a class="btn btn-warning"  href="./register.php">註冊</a>';
     }
      
-    echo '</td></tr>';
-
+    echo '</td></tr></thead>';
+    echo '<tbody>';
     foreach ($rows as $row) {
         echo "<tr>";
         echo "<td>". $row['bookname'] ."</td>\n";
@@ -85,7 +86,7 @@ try {
 
         echo "</tr>";
     }
-
+    echo '</tbody>';
     echo "</table>";
 
 } catch(PDOException $e) {
@@ -101,5 +102,13 @@ $conn = null;
 
     <hr>
     <p class="text-center">1111xxx name &copy; 2024 Wenzao DCAM</p>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="//cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
+
 </body>
 </html>
