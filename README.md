@@ -10,4 +10,27 @@
     - 單選(radio)
     - 多選(checkbox)
     - 下拉選單(select/option)
-    
+
+infinityfree
+account:if0_36696672
+password:SAUGZDa9LHthQ2V
+http://wzubook.free.nf/booklist.php
+
+awardspace
+http://wzubook.atwebpages.com/booklist.php
+
+
+byethost
+http://dcamwzubook.byethost18.com/booklist.php
+
+Control panel username:	b18_36689061
+Control panel password:	**********
+Control panel URL:	cpanel.byethost18.com
+MySQL username	b18_36689061
+MySQL password:	**********
+MySQL hostname:	sql201.byethost18.com
+FTP username:	b18_36689061
+FTP password:	**********
+FTP host name:	ftp.byethost18.com
+Your Website URL:	http://dcamwzubook.byethost18.com
+ 	 
