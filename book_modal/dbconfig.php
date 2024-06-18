@@ -6,10 +6,10 @@
 // $dbuser = 'b31_36709395';
 // $dbpass = 'abc123';
 
-$hostname = 'localhost';
-$database = 'school';
-$dbuser = 'root';
-$dbpass = '';
+$hostname = 'sql203.infinityfree.com';
+$database = 'if0_36694129_school';
+$dbuser = 'if0_36694129';
+$dbpass = 'CAL71nIIeIix';
 
-$main = 'booklist.php';
+$main = 'index.php';
 ?>
